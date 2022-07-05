@@ -3,21 +3,15 @@
 package com.vunguyenhoang.hapipet.feature.login
 
 import androidx.compose.foundation.*
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.rememberScrollableState
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.Facebook
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.colorResource
@@ -25,6 +19,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -38,7 +33,6 @@ import com.vunguyenhoang.hapipet.ui.PetTextField
 import com.vunguyenhoang.hapipet.ui.SocialButton
 import com.vunguyenhoang.hapipet.ui.theme.HapiPetTheme
 import kotlinx.coroutines.launch
-import okhttp3.internal.checkOffsetAndCount
 
 @Composable
 fun LogInPage(navController: NavController? = null) {
@@ -189,11 +183,40 @@ private fun LoadSignIn(navController: NavController?, modifier: Modifier) {
 
 @Composable
 private fun LoadSignUp(navController: NavController?, modifier: Modifier) {
+    val (nameField, updateNameField) = remember {
+        mutableStateOf("")
+    }
+    val (emailField, updateEmailField) = remember {
+        mutableStateOf("")
+    }
+    val (passwordField, updatePasswordField) = remember {
+        mutableStateOf("")
+    }
+    Column(modifier = modifier.padding(horizontal = 16.dp)) {
+        Text(text = "Your name", style = MaterialTheme.typography.h6, modifier = Modifier.padding(top = 16.dp))
+        PetTextField(value = nameField, onValueChange = updateNameField)
 
+        Text(text = "Email", style = MaterialTheme.typography.h6, modifier = Modifier.padding(top = 16.dp))
+        PetTextField(value = emailField, onValueChange = updateEmailField)
+
+        Text(text = "Your name", style = MaterialTheme.typography.h6, modifier = Modifier.padding(top = 16.dp))
+        PetTextField(
+            value = passwordField,
+            onValueChange = updatePasswordField,
+            keyboardType = KeyboardType.Password
+        )
+        ButtonWithTextAndBackgroundOpposite(
+            onClick = { },
+            title = "Create Account",
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 24.dp)
+        )
+    }
 }
 
 
-@Preview
+@Preview(device = Devices.NEXUS_5)
 @Composable
 private fun loadLoginPage() {
     HapiPetTheme {
