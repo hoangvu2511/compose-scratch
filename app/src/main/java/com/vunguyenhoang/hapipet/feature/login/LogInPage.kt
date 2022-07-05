@@ -62,22 +62,28 @@ fun LogInPage(navController: NavController? = null) {
             painter = painterResource(id = R.drawable.ic_illus_in_login_page),
             contentDescription = null
         )
-
-        Column(
+        Surface(
             modifier = Modifier
-                .weight(1f, false)
-                .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-                .background(Color.White)
+                .weight(1f),
+            shape = RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp),
+            elevation = 4.dp,
+            color = Color.White
         ) {
-            val modifier = Modifier.weight(1f, false)
-            LoadTab(pageState = pageState)
-            HorizontalPager(state = pageState) { index ->
-                when (index) {
-                    0 -> LoadSignIn(navController = navController, modifier)
-                    else -> LoadSignUp(navController = navController, modifier)
+            Column(
+                modifier = Modifier
+                    .weight(1f, false)
+            ) {
+                val modifier = Modifier.weight(1f, false)
+                LoadTab(pageState = pageState)
+                HorizontalPager(state = pageState) { index ->
+                    when (index) {
+                        0 -> LoadSignIn(navController = navController, modifier)
+                        else -> LoadSignUp(navController = navController, modifier)
+                    }
                 }
             }
         }
+
     }
 }
 
@@ -150,7 +156,7 @@ private fun LoadSignIn(navController: NavController?, modifier: Modifier) {
         )
         Column(
             modifier = Modifier
-                .padding(top = 32.dp)
+                .padding(top = 16.dp)
                 .fillMaxWidth(),
             verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally
