@@ -66,6 +66,10 @@ private fun BottomSheetOnBoardingPage(
     index: MutableState<Int>,
     navController: NavController? = null
 ) {
+    val onClickSkip: () -> Unit = {
+        navController?.navigate(ScreenPath.LOGIN_PAGE)
+    }
+
     Column(
         modifier = Modifier
             .clip(RoundedCornerShape(topEnd = 32.dp))
@@ -85,21 +89,25 @@ private fun BottomSheetOnBoardingPage(
                 .padding(top = 16.dp)
         ) {
             ButtonWithTextAndBackgroundOpposite(
-                onClick = { },
+                onClick = onClickSkip,
                 title = "Login",
                 isTextWhite = false,
                 modifier = Modifier.weight(1f)
             )
             Spacer(modifier = Modifier.size(8.dp))
             ButtonWithTextAndBackgroundOpposite(
-                onClick = { }, title = "Sign Up", modifier = Modifier.weight(1f)
+                onClick = onClickSkip,
+                title = "Sign Up",
+                modifier = Modifier.weight(1f)
             )
         }
-        SlideDisplayInBottomSheet(onClickSkip = {
-            navController?.navigate(ScreenPath.LOGIN_PAGE)
-        }, onClickNext = {
-            index.value++
-        }, index.value)
+        SlideDisplayInBottomSheet(
+            onClickSkip = onClickSkip,
+            onClickNext = {
+                index.value++
+            },
+            index = index.value
+        )
     }
 }
 
@@ -146,13 +154,5 @@ private fun SlideDisplayInBottomSheet(
             },
             style = MaterialTheme.typography.body1.copy(MaterialTheme.colors.primary)
         )
-    }
-}
-
-@Preview
-@Composable
-private fun previewOnBoardingPage() {
-    HapiPetTheme {
-        OnBoardingPage()
     }
 }

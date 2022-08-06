@@ -22,17 +22,16 @@ fun AppSplashScreen(navigator: NavController? = null) {
     ) {
         LaunchedEffect(key1 = true) {
             delay(2000L)
-            navigator?.navigate(ScreenPath.ON_BOARDING_PAGE)
+            navigator?.navigate(ScreenPath.ON_BOARDING_PAGE){
+                popUpTo(ScreenPath.ON_BOARDING_PAGE)
+            }
         }
         val (logo) = createRefs()
         Image(
             painter = painterResource(id = R.drawable.ic_logo_with_text),
             contentDescription = null,
             modifier = Modifier.constrainAs(logo) {
-                top.linkTo(parent.top)
-                bottom.linkTo(parent.bottom)
-                start.linkTo(parent.start)
-                end.linkTo(parent.end)
+                centerTo(parent)
             }
         )
     }
