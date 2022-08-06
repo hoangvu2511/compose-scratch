@@ -28,9 +28,10 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.vunguyenhoang.hapipet.R
-import com.vunguyenhoang.hapipet.ui.ButtonWithTextAndBackgroundOpposite
-import com.vunguyenhoang.hapipet.ui.PetTextField
-import com.vunguyenhoang.hapipet.ui.SocialButton
+import com.vunguyenhoang.hapipet.ui.widget.ButtonWithTextAndBackgroundOpposite
+import com.vunguyenhoang.hapipet.ui.widget.PetTextField
+import com.vunguyenhoang.hapipet.ui.ScreenPath
+import com.vunguyenhoang.hapipet.ui.widget.SocialButton
 import com.vunguyenhoang.hapipet.ui.theme.HapiPetTheme
 import kotlinx.coroutines.launch
 
@@ -193,13 +194,25 @@ private fun LoadSignUp(navController: NavController?, modifier: Modifier) {
         mutableStateOf("")
     }
     Column(modifier = modifier.padding(horizontal = 16.dp)) {
-        Text(text = "Your name", style = MaterialTheme.typography.h6, modifier = Modifier.padding(top = 16.dp))
+        Text(
+            text = "Your name",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(top = 16.dp)
+        )
         PetTextField(value = nameField, onValueChange = updateNameField)
 
-        Text(text = "Email", style = MaterialTheme.typography.h6, modifier = Modifier.padding(top = 16.dp))
+        Text(
+            text = "Email",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(top = 16.dp)
+        )
         PetTextField(value = emailField, onValueChange = updateEmailField)
 
-        Text(text = "Your name", style = MaterialTheme.typography.h6, modifier = Modifier.padding(top = 16.dp))
+        Text(
+            text = "Your name",
+            style = MaterialTheme.typography.h6,
+            modifier = Modifier.padding(top = 16.dp)
+        )
         PetTextField(
             value = passwordField,
             onValueChange = updatePasswordField,
