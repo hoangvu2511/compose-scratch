@@ -20,6 +20,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.vunguyenhoang.hapipet.R
+import com.vunguyenhoang.hapipet.models.KeyboardModel
 import com.vunguyenhoang.hapipet.ui.widget.ButtonWithTextAndBackgroundOpposite
 import com.vunguyenhoang.hapipet.ui.widget.HapiPetAppBar
 import com.vunguyenhoang.hapipet.ui.widget.HapiPetKeyBoard
@@ -74,8 +75,8 @@ fun ForgetPasswordScreen(navHostController: NavHostController) {
         if (curStep == 2) {
             Spacer(modifier = Modifier.weight(1f))
             HapiPetKeyBoard {
-                val newCode = if (it != "remove") {
-                    code + it
+                val newCode = if (it is KeyboardModel.Digit) {
+                    code + it.num
                 } else {
                     code.dropLast(1)
                 }
