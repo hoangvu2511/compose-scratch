@@ -24,14 +24,17 @@ import androidx.compose.ui.unit.dp
 fun PetTextField(
     value: String,
     onValueChange: (String) -> Unit,
-    keyboardType: KeyboardType = KeyboardType.Text
+    keyboardType: KeyboardType = KeyboardType.Text,
+    placeHolder: @Composable () -> Unit = {},
+    label: @Composable () -> Unit = {}
 ) {
     val (passwordVisible, setVisible) = rememberSaveable { mutableStateOf(false) }
     OutlinedTextField(
         value = value,
         onValueChange = onValueChange,
         modifier = Modifier
-            .fillMaxWidth().padding(top = 8.dp),
+            .fillMaxWidth()
+            .padding(top = 8.dp),
         shape = MaterialTheme.shapes.large.copy(CornerSize(8.dp)),
         colors = TextFieldDefaults.textFieldColors(
             backgroundColor = Color.White
@@ -51,10 +54,34 @@ fun PetTextField(
                     Icon(imageVector = image, null)
                 }
             }
-        }
+        },
+        placeholder = placeHolder,
+        label = label
     )
 }
 
+
+@Composable
+fun PetSingleLengthTextField(
+    char: String = "",
+    updateChar: (String) -> Unit = {},
+    modifier: Modifier = Modifier
+) {
+    TextField(
+        value = char,
+        onValueChange = {
+            updateChar(it)
+        },
+        singleLine = true,
+        modifier = modifier.padding(12.dp),
+        shape = MaterialTheme.shapes.small,
+        colors = TextFieldDefaults.textFieldColors(
+            disabledIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedIndicatorColor = Color.Transparent
+        )
+    )
+}
 
 @Preview
 @Composable

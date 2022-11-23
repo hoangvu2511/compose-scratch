@@ -22,13 +22,19 @@ fun ButtonWithTextAndBackgroundOpposite(
     onClick: () -> Unit,
     title: String,
     isTextWhite: Boolean = true,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    isEnabled: Boolean = true
 ) {
     var backgroundColor = Color.White
     var textColor = colorResource(id = R.color.pink)
+    var borderColor = backgroundColor
     if (isTextWhite) {
         backgroundColor = textColor
         textColor = Color.White
+        borderColor = textColor
+    }
+    if (isEnabled) {
+        borderColor = colorResource(id = R.color.grayScale)
     }
 
     Button(
@@ -38,9 +44,10 @@ fun ButtonWithTextAndBackgroundOpposite(
         ),
         border = BorderStroke(
             width = 1.dp,
-            color = if (textColor != Color.White) textColor else backgroundColor
+            color = borderColor
         ),
-        modifier = modifier
+        modifier = modifier,
+        enabled = isEnabled
     ) {
         Text(
             text = title, style = TextStyle(

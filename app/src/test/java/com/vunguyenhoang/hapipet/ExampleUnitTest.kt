@@ -1,8 +1,7 @@
 package com.vunguyenhoang.hapipet
 
 import org.junit.Test
-
-import org.junit.Assert.*
+import java.math.BigInteger
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -12,6 +11,97 @@ import org.junit.Assert.*
 class ExampleUnitTest {
     @Test
     fun addition_isCorrect() {
-        assertEquals(4, 2 + 2)
+        plusOne(intArrayOf(1, 2, 3))
+    }
+
+
+    fun plusOne(digits: IntArray): IntArray {
+        return digits.joinToString(separator = "").toBigInteger().plus(BigInteger.ONE)
+            .toString().toCharArray()
+            .map { it.toInt() }.toIntArray()
+    }
+
+    fun removeElement(nums: IntArray, `val`: Int): Int {
+
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

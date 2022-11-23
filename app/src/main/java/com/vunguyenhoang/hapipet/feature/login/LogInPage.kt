@@ -28,11 +28,11 @@ import com.google.accompanist.pager.HorizontalPager
 import com.google.accompanist.pager.PagerState
 import com.google.accompanist.pager.rememberPagerState
 import com.vunguyenhoang.hapipet.R
+import com.vunguyenhoang.hapipet.ui.ScreenPath
+import com.vunguyenhoang.hapipet.ui.theme.HapiPetTheme
 import com.vunguyenhoang.hapipet.ui.widget.ButtonWithTextAndBackgroundOpposite
 import com.vunguyenhoang.hapipet.ui.widget.PetTextField
-import com.vunguyenhoang.hapipet.ui.ScreenPath
 import com.vunguyenhoang.hapipet.ui.widget.SocialButton
-import com.vunguyenhoang.hapipet.ui.theme.HapiPetTheme
 import kotlinx.coroutines.launch
 
 @Composable
@@ -140,7 +140,9 @@ private fun LoadSignIn(navController: NavController?, modifier: Modifier) {
             ),
             modifier = Modifier
                 .padding(top = 16.dp)
-                .clickable { }
+                .clickable {
+                    navController?.navigate(ScreenPath.FORGET_PASSWORD_SCREEN)
+                }
         )
         ButtonWithTextAndBackgroundOpposite(
             onClick = {},

@@ -7,6 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.vunguyenhoang.hapipet.feature.forgetpassword.ForgetPasswordScreen
 import com.vunguyenhoang.hapipet.feature.login.LogInPage
 import com.vunguyenhoang.hapipet.feature.onboardingpage.OnBoardingPage
 import com.vunguyenhoang.hapipet.ui.AppSplashScreen
@@ -35,6 +36,9 @@ class MainActivity : ComponentActivity() {
             }
             composable(ScreenPath.LOGIN_PAGE) {
                 LogInPage(navController)
+            }
+            composable(ScreenPath.FORGET_PASSWORD_SCREEN) {
+                ForgetPasswordScreen(navController)
             }
         }
     }
